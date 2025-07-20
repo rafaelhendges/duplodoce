@@ -87,6 +87,18 @@
         .animate-float {
             animation: float 3s ease-in-out infinite;
         }
+        /* Animação para o botão do WhatsApp */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(247, 98, 140, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(247, 98, 140, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(247, 98, 140, 0);
+            }
+        }
         
         /* Componentes */
         .content-card {
@@ -294,6 +306,36 @@
         .menu-item.adicional:hover {
             background: rgba(247, 98, 140, 0.5);
         }
+        /* Botão Flutuante WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 36px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float i {
+            margin-top: 4px;
+        }
+        
+        .whatsapp-float:hover {
+            animation: none; /* Para a animação ao passar o mouse */
+            transform: scale(1.1);
+            background-color: #128c7e;
+        }
         
         /* Responsividade */
         @media (max-width: 768px) {
@@ -304,11 +346,19 @@
             .menu-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
+            .whatsapp-float {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+            }
         }
     </style>
 </head>
-
 <body class="font-sans">
+    <!-- Botão Flutuante WhatsApp -->
+    <a href="https://wa.me/556295742851" target="_blank" class="whatsapp-float" aria-label="Fale conosco pelo WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
     <!-- Header/Navigation -->
     <header class="sticky top-0 z-50 bg-white bg-opacity-90 backdrop-blur-sm shadow-sm">
         <nav class="container mx-auto px-6 py-4">
@@ -354,7 +404,6 @@
             <a href="#contact" class="nav-link py-4 text-2xl">Contato</a>
         </div>
     </div>
-
     <main>
         <!-- Hero Section -->
         <section id="home" class="py-20">
@@ -396,7 +445,6 @@
                 </div>
             </div>
         </section>
-
         <!-- About Section -->
         <section id="about" class="py-20">
             <div class="container mx-auto px-6">
@@ -411,7 +459,7 @@
                     <div class="md:w-1/2 mb-12 md:mb-0">
                         <div class="relative rounded-lg shadow-xl w-full h-auto max-w-lg mx-auto overflow-hidden">
                             <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-primary to-secondary flex items-center justify-center p-8">
-                                <img src="imagens/IMAGEM 10.png" 
+                                <img src="imagens/IMAGEM 0.png" 
                                      alt="Ingredientes selecionados para brigadeiros gourmet" 
                                      class="w-full h-full object-cover">
                             </div>
@@ -453,7 +501,6 @@
                 </div>
             </div>
         </section>
-
         <!-- Flavors Section -->
         <section id="flavors" class="py-20">
             <div class="container mx-auto px-6">
@@ -536,7 +583,10 @@
                         <p class="text-lg text-contrast">Descubra todas as nossas deliciosas opções</p>
                     </div>
                     
-                    <div class="menu-grid">
+                    <div class="text-center mb-6">
+                        <h4 class="text-2xl font-bold text-contrast">Tradicionais</h4>
+                    </div>
+                    <div class="menu-grid mb-10">
                         <div class="menu-item">Chocolate Tradicional</div>
                         <div class="menu-item">Chocolate meio amargo</div>
                         <div class="menu-item">Casadinho de chocolate</div>
@@ -549,17 +599,22 @@
                         <div class="menu-item">Paçoca</div>
                         <div class="menu-item">Beijinho</div>
                         <div class="menu-item">Chocoball</div>
-                        <div class="menu-item adicional">Churros (adicional)</div>
-                        <div class="menu-item adicional">Ferrero Rocher (adicional)</div>
-                        <div class="menu-item adicional">Ninho com Nutella (adicional)</div>
-                        <div class="menu-item adicional">Tradicional Gourmet (adicional)</div>
-                        <div class="menu-item adicional">Chocolate branco (adicional)</div>
-                        <div class="menu-item adicional">Meio amargo Gourmet (adicional)</div>
+                    </div>
+                    
+                    <div class="text-center mb-6">
+                        <h4 class="text-2xl font-bold text-contrast">Especiais</h4>
+                    </div>
+                    <div class="menu-grid">
+                        <div class="menu-item adicional">Churros</div>
+                        <div class="menu-item adicional">Ferrero Rocher</div>
+                        <div class="menu-item adicional">Ninho com Nutella</div>
+                        <div class="menu-item adicional">Tradicional Gourmet</div>
+                        <div class="menu-item adicional">Chocolate branco</div>
+                        <div class="menu-item adicional">Meio amargo Gourmet</div>
                     </div>
                 </div>
             </div>
         </section>
-
         <!-- Gallery Section -->
         <section id="gallery" class="py-20">
             <div class="container mx-auto px-6">
@@ -779,10 +834,7 @@
                         <a href="https://wa.me/556295742851" target="_blank" class="text-contrast hover:text-primary" aria-label="WhatsApp">
                             <i class="fab fa-whatsapp text-2xl"></i>
                         </a>
-                        <a href="mailto:contato@duplodoce.com" class="text-contrast hover:text-primary" aria-label="Email">
-                            <i class="fas fa-envelope text-2xl"></i>
-                        </a>
-                    </div>
+                     </div>
                     <p class="text-contrast text-center md:text-right">
                         &copy; 2023 Duplo Doce. Todos os direitos reservados.
                     </p>
@@ -873,3 +925,4 @@
     </script>
 </body>
 </html>
+
