@@ -4,155 +4,319 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Duplo Doce - Brigadeiros Gourmet</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Configuração Tailwind com paleta personalizada -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                    },
                     colors: {
-                        primary: '#fdb9c4',
-                        secondary: '#8d4513',
+                        primary: '#F7628C',
+                        secondary: '#FBB4D4',
+                        background: '#feb6b7',
                         dark: '#000000',
+                        light: '#FFFFFF',
+                        text: '#3a1a1b'
                     }
                 }
             }
         }
     </script>
+    
+    <!-- Fonte Nunito do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap');
-        
-        .font-pacifico {
-            font-family: 'Pacifico', cursive;
+        /* Estilos gerais */
+        body {
+            background-color: #feb6b7;
+            color: #3a1a1b;
+            min-height: 100vh;
+            font-size: 16px;
         }
         
-        .font-poppins {
-            font-family: 'Poppins', sans-serif;
+        p, li {
+            line-height: 1.6;
+        }
+        
+        a:focus, button:focus, input:focus, textarea:focus, select:focus {
+            outline: 2px solid #3a1a1b;
+            outline-offset: 2px;
+        }
+        
+        a {
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+        }
+        
+        .text-contrast {
+            color: #3a1a1b;
+        }
+        
+        .text-shadow {
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        /* Elementos decorativos */
+        .pink-dot {
+            width: 10px;
+            height: 10px;
+            background: #d84b72;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        
+        /* Animações */
+        @keyframes float {
+            0%   { transform: translateY(0px); }
+            50%  { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Componentes */
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background: #d84b72;
+            color: white;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover, .btn-primary:focus {
+            background: #c23a60;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            outline: 2px solid white;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #d84b72;
+            color: #d84b72;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover, .btn-secondary:focus {
+            background: #d84b72;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            outline: 2px solid white;
+        }
+        
+        .section-title {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 2.5rem;
+            color: #3a1a1b;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .title-divider {
+            width: 80px;
+            height: 4px;
+            background: #d84b72;
+            margin: 0 auto 2rem;
+            border-radius: 2px;
+        }
+        
+        .nav-link {
+            color: #3a1a1b;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover, .nav-link:focus {
+            color: #d84b72;
+        }
+        
+        .flavor-card {
+            transition: all 0.4s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.8);
         }
         
         .flavor-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                        0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         
-        .hero-pattern {
-            background-image: radial-gradient(#fdb9c433 1px, transparent 1px);
-            background-size: 20px 20px;
+        .gallery-item {
+            transition: all 0.3s ease;
         }
         
-        /* Animation for floating brigadeiros */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+        .gallery-item:hover {
+            transform: scale(1.05);
+            z-index: 10;
         }
         
-        .floating {
-            animation: float 6s ease-in-out infinite;
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
         
-        .floating-delay-1 {
-            animation: float 6s ease-in-out infinite 1s;
+        footer {
+            background: rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
         }
         
-        .floating-delay-2 {
-            animation: float 6s ease-in-out infinite 2s;
-        }
-        
-        /* Custom checkbox for flavor selection */
-        .custom-checkbox {
+        /* Menu mobile */
+        .mobile-menu-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(251, 180, 212, 0.95);
+            z-index: 1000;
             display: none;
         }
         
-        .custom-checkbox + label {
-            position: relative;
-            padding-left: 35px;
-            cursor: pointer;
-            display: inline-block;
-            color: #fff;
+        .mobile-menu-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         
-        .custom-checkbox + label:before {
-            content: '';
+        .mobile-menu-content a {
+            font-size: 1.5rem;
+            padding: 1rem 0;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .close-menu-btn {
             position: absolute;
-            left: 0;
-            top: 0;
-            width: 25px;
-            height: 25px;
-            border: 2px solid #fdb9c4;
-            border-radius: 50%;
-            background: transparent;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: #3a1a1b;
         }
         
-        .custom-checkbox:checked + label:after {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 7px;
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            background: #fdb9c4;
+        /* Formulário */
+        .contact-form input, 
+        .contact-form textarea, 
+        .contact-form select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 2px solid #FBB4D4;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
         }
         
-        /* Custom radio for quantity selection */
-        .custom-radio {
-            display: none;
+        .contact-form input:focus, 
+        .contact-form textarea:focus, 
+        .contact-form select:focus {
+            border-color: #F7628C;
+            outline: none;
         }
         
-        .custom-radio + label {
-            position: relative;
-            padding-left: 35px;
-            cursor: pointer;
-            display: inline-block;
-            color: #fff;
+        .form-group {
+            margin-bottom: 1.5rem;
         }
         
-        .custom-radio + label:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 25px;
-            height: 25px;
-            border: 2px solid #fdb9c4;
-            border-radius: 4px;
-            background: transparent;
+        .flavor-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
         }
         
-        .custom-radio:checked + label:after {
-            content: '\2713';
-            position: absolute;
-            left: 5px;
-            top: 0;
-            color: #fdb9c4;
-            font-size: 18px;
+        /* Cardápio */
+        .menu-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 3rem;
         }
         
-        /* Brigadeiro floating animation */
-        .brigadeiro-float {
-            animation: float 8s ease-in-out infinite;
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
         }
         
-        .brigadeiro-float:nth-child(2) {
-            animation-delay: 1.5s;
+        .menu-item {
+            background: rgba(251, 180, 212, 0.3);
+            padding: 0.8rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
         }
         
-        .brigadeiro-float:nth-child(3) {
-            animation-delay: 3s;
+        .menu-item:hover {
+            transform: translateY(-5px);
+            background: rgba(251, 180, 212, 0.5);
+        }
+        
+        .menu-item.adicional {
+            background: rgba(247, 98, 140, 0.3);
+        }
+        
+        .menu-item.adicional:hover {
+            background: rgba(247, 98, 140, 0.5);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
         }
     </style>
 </head>
-<body class="bg-dark text-white font-poppins hero-pattern">
+
+<body class="font-sans">
     <!-- Header/Navigation -->
-    <header class="sticky top-0 z-50 bg-black bg-opacity-90 backdrop-blur-sm">
+    <header class="sticky top-0 z-50 bg-white bg-opacity-90 backdrop-blur-sm shadow-sm">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <div class="text-2xl font-pacifico text-primary">
+                <div class="text-2xl font-bold text-primary">
                     <a href="#" class="flex items-center">
-                        <!-- Ícone substituído pela imagem -->
-                        <div class="h-8 w-8 mr-2 rounded-full bg-primary flex items-center justify-center overflow-hidden">
-                            <img src="imagens/imagem 0.jpg" 
+                        <div class="h-10 w-10 mr-2 rounded-full bg-primary flex items-center justify-center overflow-hidden">
+                            <img src="imagens/IMAGEM 0.png" 
                                  alt="Logo Duplo Doce" 
                                  class="w-full h-full object-cover">
                         </div>
@@ -161,816 +325,551 @@
                 </div>
                 
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="hover:text-primary transition">Início</a>
-                    <a href="#about" class="hover:text-primary transition">Sobre</a>
-                    <a href="#flavors" class="hover:text-primary transition">Sabores</a>
-                    <a href="#gallery" class="hover:text-primary transition">Galeria</a>
-                    <a href="#contact" class="hover:text-primary transition">Contato</a>
+                    <a href="#home" class="nav-link">Início</a>
+                    <a href="#about" class="nav-link">Sobre</a>
+                    <a href="#flavors" class="nav-link">Sabores</a>
+                    <a href="#gallery" class="nav-link">Galeria</a>
+                    <a href="#contact" class="nav-link">Contato</a>
                 </div>
                 
                 <div class="md:hidden">
-                    <button id="menu-btn" class="text-primary focus:outline-none">
+                    <button id="menu-btn" class="text-primary focus:outline-none" aria-label="Abrir menu" aria-expanded="false">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
-            
-            <!-- Mobile menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
-                <a href="#home" class="block hover:text-primary transition py-2">Início</a>
-                <a href="#about" class="block hover:text-primary transition py-2">Sobre</a>
-                <a href="#flavors" class="block hover:text-primary transition py-2">Sabores</a>
-                <a href="#gallery" class="block hover:text-primary transition py-2">Galeria</a>
-                <a href="#contact" class="block hover:text-primary transition py-2">Contato</a>
-            </div>
         </nav>
     </header>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu-container">
+        <button class="close-menu-btn" id="close-menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="mobile-menu-content">
+            <a href="#home" class="nav-link py-4 text-2xl">Início</a>
+            <a href="#about" class="nav-link py-4 text-2xl">Sobre</a>
+            <a href="#flavors" class="nav-link py-4 text-2xl">Sabores</a>
+            <a href="#gallery" class="nav-link py-4 text-2xl">Galeria</a>
+            <a href="#contact" class="nav-link py-4 text-2xl">Contato</a>
+        </div>
+    </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="py-20 md:py-32 relative overflow-hidden">
-        <!-- Floating brigadeiros decoration -->
-        <div class="absolute top-10 left-10 text-primary opacity-20 text-4xl floating">
-            <i class="fas fa-candy-cane"></i>
-        </div>
-        <div class="absolute top-1/3 right-20 text-secondary opacity-20 text-5xl floating-delay-1">
-            <i class="fas fa-cookie"></i>
-        </div>
-        <div class="absolute bottom-20 left-1/4 text-primary opacity-20 text-6xl floating-delay-2">
-            <i class="fas fa-ice-cream"></i>
-        </div>
-        
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-12 md:mb-0">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 font-pacifico text-primary">
-                    Transforme sua celebração!
-                </h1>
-                <p class="text-lg md:text-xl mb-8">
-                    A festa não está completa sem o sabor dos nossos DOCES. Brigadeiros gourmet feitos com 1 lata de amor, 2 colheres de carinho e 5 xícaras de felicidade.
-                </p>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#flavors" class="bg-primary hover:bg-primary-dark text-dark font-bold py-3 px-6 rounded-full transition text-center">
-                        Nossos Sabores
-                    </a>
-                    <a href="#contact" class="border-2 border-primary text-primary hover:bg-primary hover:text-dark font-bold py-3 px-6 rounded-full transition text-center">
-                        Faça seu pedido
-                    </a>
-                </div>
-            </div>
-            <div class="md:w-1/2 flex justify-center">
-                <div class="relative">
-                    <div class="rounded-full w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-2xl border-4 border-primary overflow-hidden">
-                        <div class="brigadeiro-float absolute top-1/4 left-1/4 w-16 h-16 rounded-full bg-secondary"></div>
-                        <div class="brigadeiro-float absolute top-1/3 right-1/4 w-14 h-14 rounded-full bg-primary"></div>
-                        <div class="brigadeiro-float absolute bottom-1/4 right-1/3 w-12 h-12 rounded-full bg-secondary"></div>
-                        <img src="imagens/imagem 0.jpg" 
-                             alt="Brigadeiros Gourmet" 
-                             class="w-48 h-48 rounded-full object-cover border-4 border-white">
-                    </div>
-                    <div class="absolute -bottom-5 -right-5 bg-secondary text-white p-4 rounded-full shadow-lg">
-                        <i class="fas fa-heart text-3xl"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-black bg-opacity-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 font-pacifico text-primary">
-                    Nossa Receita Especial
-                </h2>
-                <div class="w-24 h-1 bg-secondary mx-auto"></div>
-            </div>
-            
-            <div class="flex flex-col md:flex-row items-center">
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="py-20">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-12 md:mb-0">
-                    <div class="relative rounded-lg shadow-xl w-full h-auto max-w-lg mx-auto overflow-hidden">
-                        <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-primary to-secondary flex items-center justify-center p-8">
-                            <img src="imagens/IMAGEM 6.png" 
-                                 alt="Ingredientes selecionados" 
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 text-contrast text-shadow">
+                        Transforme sua celebração!
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8 text-contrast">
+                        A festa não está completa sem o sabor dos nossos DOCES. Brigadeiros gourmet feitos com 1 lata de amor, 2 colheres de carinho e 5 xícaras de felicidade.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#flavors" class="btn-primary">
+                            Nossos Sabores
+                        </a>
+                        <a href="#contact" class="btn-secondary">
+                            Faça seu pedido
+                        </a>
+                    </div>
+                    
+                    <div class="mt-10 flex items-center">
+                        <span class="pink-dot"></span>
+                        <span class="pink-dot"></span>
+                        <span class="pink-dot"></span>
+                        <span class="ml-2 text-sm text-contrast">Brigadeiros feitos com amor e ingredientes selecionados</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="rounded-full w-70 h-70 md:w-80 md:h-80 bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-2xl border-4 border-white overflow-hidden">
+                            <img src="imagens/IMAGEM 0.png" 
+                                 alt="Brigadeiros gourmet Duplo Doce" 
+                                 class="w-48 h-48 rounded-full object-cover border-4 border-white">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-primary text-white p-4 rounded-full shadow-lg animate-float hover:scale-110 transition duration-300 ease-in-out">
+                            <i class="fas fa-heart text-3xl" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="section-title">
+                        Nossa Receita Especial
+                    </h2>
+                    <div class="title-divider"></div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center content-card p-8">
+                    <div class="md:w-1/2 mb-12 md:mb-0">
+                        <div class="relative rounded-lg shadow-xl w-full h-auto max-w-lg mx-auto overflow-hidden">
+                            <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-primary to-secondary flex items-center justify-center p-8">
+                                <img src="imagens/IMAGEM 10.png" 
+                                     alt="Ingredientes selecionados para brigadeiros gourmet" 
+                                     class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 md:pl-12">
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-bold mb-4 text-primary">Ingredientes selecionados</h3>
+                            <p class="text-contrast">
+                                Na Duplo Doce, usamos apenas os melhores ingredientes para criar brigadeiros que são verdadeiras obras de arte. Cada doce é preparado com cuidado artesanal para garantir a qualidade e o sabor inigualável.
+                            </p>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-bold mb-4 text-primary">Personalização única</h3>
+                            <p class="text-contrast">
+                                Criamos doces personalizados para tornar seu evento ainda mais especial. Desde embalagens temáticas até sabores exclusivos, tudo é pensado para combinar com a sua celebração.
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center mx-auto max-w-4xl">
+                            <div class="bg-white bg-opacity-80 p-6 rounded-lg border-l-4 border-primary shadow-md">
+                                <i class="fas fa-award text-primary text-3xl mb-3" aria-hidden="true"></i>
+                                <h4 class="font-bold text-dark">Qualidade Premium</h4>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-80 p-6 rounded-lg border-l-4 border-primary shadow-md">
+                                <i class="fas fa-heart text-primary text-3xl mb-3" aria-hidden="true"></i>
+                                <h4 class="font-bold text-dark">Feito com Amor</h4>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-80 p-6 rounded-lg border-l-4 border-primary shadow-md">
+                                <i class="fas fa-birthday-cake text-primary text-3xl mb-3" aria-hidden="true"></i>
+                                <h4 class="font-bold text-dark">Para Todas as Ocasiões</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flavors Section -->
+        <section id="flavors" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="section-title">
+                        Os Mais Pedidos
+                    </h2>
+                    <p class="text-xl text-contrast max-w-2xl mx-auto">
+                        Descubra nossa variedade de sabores que vão deixar seu paladar encantado!
+                    </p>
+                    <div class="title-divider"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Flavor 1 -->
+                    <div class="flavor-card rounded-xl p-6 transition duration-300 ease-in-out hover:shadow-lg">
+                        <div class="bg-white bg-opacity-70 rounded-full w-40 h-40 flex items-center justify-center mx-auto mb-6 overflow-hidden">
+                           <img 
+                             src="imagens/IMAGEM 10.png" 
+                             alt="Brigadeiro Tradicional" 
+                             class="rounded-full w-full h-full object-cover"
+                           >
+                        </div>
+                        <h3 class="text-2xl font-bold text-center mb-3 text-contrast">Tradicional</h3>
+                        <p class="text-contrast text-center mb-4">
+                            O clássico brigadeiro que nunca sai de moda, feito com chocolate nobre e muito carinho.
+                        </p>
+                    </div>
+                    
+                    <!-- Flavor 2 -->
+                    <div class="flavor-card rounded-xl p-6 transition duration-300 ease-in-out hover:shadow-lg">
+                        <div class="bg-white bg-opacity-70 rounded-full w-40 h-40 flex items-center justify-center mx-auto mb-6 overflow-hidden">
+                             <img 
+                               src="imagens/IMAGEM 7.png" 
+                               alt="Brigadeiro Ninho" 
+                               class="rounded-full w-full h-full object-cover"
+                             >
+                        </div>
+                        <h3 class="text-2xl font-bold text-center mb-3 text-contrast">Ninho</h3>
+                        <p class="text-contrast text-center mb-4">
+                            Cremoso e suave, feito com leite ninho e um toque especial que vai te conquistar.
+                        </p>
+                    </div>
+                    
+                    <!-- Flavor 3 -->
+                    <div class="flavor-card rounded-xl p-6 transition duration-300 ease-in-out hover:shadow-lg">
+                        <div class="bg-white bg-opacity-70 rounded-full w-40 h-40 flex items-center justify-center mx-auto mb-6 overflow-hidden">
+                             <img 
+                               src="imagens/IMAGEM 7.png" 
+                               alt="Brigadeiro Oreo" 
+                               class="rounded-full w-full h-full object-cover"
+                             >
+                        </div>
+                        <h3 class="text-2xl font-bold text-center mb-3 text-contrast">Oreo</h3>
+                        <p class="text-contrast text-center mb-4">
+                            A combinação perfeita de brigadeiro com pedaços crocantes de biscoito Oreo.
+                        </p>
+                    </div>
+                    
+                    <!-- Flavor 4 -->
+                    <div class="flavor-card rounded-xl p-6 transition duration-300 ease-in-out hover:shadow-lg">
+                        <div class="bg-white bg-opacity-70 rounded-full w-40 h-40 flex items-center justify-center mx-auto mb-6 overflow-hidden">
+                             <img 
+                               src="imagens/IMAGEM 10.png" 
+                               alt="Brigadeiro Casadinho" 
+                               class="rounded-full w-full h-full object-cover"
+                             >
+                        </div>
+                        <h3 class="text-2xl font-bold text-center mb-3 text-contrast">Casadinho</h3>
+                        <p class="text-contrast text-center mb-4">
+                            A união perfeita dos sabores ninho e chocolate em um só doce irresistível.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Cardápio Completo -->
+                <div class="menu-container mt-16">
+                    <div class="text-center mb-8">
+                        <h3 class="text-3xl font-bold text-primary">Cardápio Completo</h3>
+                        <p class="text-lg text-contrast">Descubra todas as nossas deliciosas opções</p>
+                    </div>
+                    
+                    <div class="menu-grid">
+                        <div class="menu-item">Chocolate Tradicional</div>
+                        <div class="menu-item">Chocolate meio amargo</div>
+                        <div class="menu-item">Casadinho de chocolate</div>
+                        <div class="menu-item">Casadinho de morango</div>
+                        <div class="menu-item">Morango</div>
+                        <div class="menu-item">Ninho</div>
+                        <div class="menu-item">Oreo</div>
+                        <div class="menu-item">Limão</div>
+                        <div class="menu-item">Maracujá</div>
+                        <div class="menu-item">Paçoca</div>
+                        <div class="menu-item">Beijinho</div>
+                        <div class="menu-item">Chocoball</div>
+                        <div class="menu-item adicional">Churros (adicional)</div>
+                        <div class="menu-item adicional">Ferrero Rocher (adicional)</div>
+                        <div class="menu-item adicional">Ninho com Nutella (adicional)</div>
+                        <div class="menu-item adicional">Tradicional Gourmet (adicional)</div>
+                        <div class="menu-item adicional">Chocolate branco (adicional)</div>
+                        <div class="menu-item adicional">Meio amargo Gourmet (adicional)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h1 class="section-title">
+                        Nossas Criações
+                    </h1>
+                    <h2 class="text-xl text-contrast mt-2">
+                        Doces lindos, personalizados e com a cara da sua festa
+                    </h2>
+                    <div class="title-divider"></div>
+                </div>
+                
+                <!-- Grid com 8 fotos -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- Item 1 -->
+                    <div class="overflow-hidden rounded-lg group relative gallery-item">
+                        <div class="aspect-square bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                            <img src="imagens/IMAGEM 2.png" 
+                                 alt="Brigadeiros Tradicionais" 
                                  class="w-full h-full object-cover">
                         </div>
-                        <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
-                            <span class="text-white text-xl font-bold">Feito com ingredientes selecionados</span>
+                        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="text-white font-bold">Ninho com Nutella / Ninho</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="overflow-hidden rounded-lg group relative gallery-item">
+                        <div class="aspect-square bg-gradient-to-br from-secondary to-primary flex items-center justify-center">
+                            <img src="imagens/IMAGEM 3.png" 
+                                 alt="Brigadeiros Ninho" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="text-white font-bold">Paçoca</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="overflow-hidden rounded-lg group relative gallery-item">
+                        <div class="aspect-square bg-gradient-to-br from-primary to-pink-300 flex items-center justify-center">
+                            <img src="imagens/IMAGEM 4.png" 
+                                 alt="Brigadeiros Oreo" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="text-white font-bold">Churros / Beijinho </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 4 -->
+                    <div class="overflow-hidden rounded-lg group relative gallery-item">
+                        <div class="aspect-square bg-gradient-to-br from-pink-300 to-primary flex items-center justify-center">
+                            <img src="imagens/IMAGEM 5.png" 
+                                 alt="Brigadeiros Casadinho" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="text-white font-bold">Brigadeir / Ninho</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 5 -->
+                    <div class="overflow-hidden rounded-lg group relative gallery-item">
+                        <div class="aspect-square bg-gradient-to-br from-yellow-300 to-amber-500 flex items-center justify-center">
+                            <img src="imagens/IMAGEM 6.png" 
+                                 alt="Cupcakes Decorados" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="text-white font-bold">Chocoball / Ninho / Ninho com  Nutella</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 6 -->
+                    <div class="overflow-hidden rounded-lg group relative gallery-item">
+                        <div class="aspect-square bg-gradient-to-br from-amber-500 to-yellow-300 flex items-center justify-center">
+                            <img src="imagens/IMAGEM 7.png" 
+                                 alt="Bolos Personalizados" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="text-white font-bold">Chocolate Tradicional </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 7 -->
+                    <div class="overflow-hidden rounded-lg group relative gallery-item">
+                        <div class="aspect-square bg-gradient-to-br from-red-300 to-rose-500 flex items-center justify-center">
+                            <img src="imagens/IMAGEM 8.png" 
+                                 alt="Brownies Premium" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="text-white font-bold">Chocolate Meio Amargo</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 8 -->
+                    <div class="overflow-hidden rounded-lg group relative gallery-item">
+                        <div class="aspect-square bg-gradient-to-br from-rose-500 to-red-300 flex items-center justify-center">
+                            <img src="imagens/IMAGEM 1.png" 
+                                 alt="Docinhos Temáticos" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="text-white font-bold">Ninho com Nutella</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="md:w-1/2 md:pl-12">
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-bold mb-4 text-primary">Ingredientes selecionados</h3>
-                        <p class="text-gray-300">
-                            Na Duplo Doce, usamos apenas os melhores ingredientes para criar brigadeiros que são verdadeiras obras de arte. Cada doce é preparado com cuidado artesanal para garantir a qualidade e o sabor inigualável.
-                        </p>
-                    </div>
-                    
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-bold mb-4 text-primary">Personalização única</h3>
-                        <p class="text-gray-300">
-                            Criamos doces personalizados para tornar seu evento ainda mais especial. Desde embalagens temáticas até sabores exclusivos, tudo é pensado para combinar com a sua celebração.
-                        </p>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-secondary bg-opacity-20 p-4 rounded-lg border-l-4 border-primary">
-                            <i class="fas fa-award text-primary text-2xl mb-2"></i>
-                            <h4 class="font-bold">Qualidade Premium</h4>
-                        </div>
-                        <div class="bg-secondary bg-opacity-20 p-4 rounded-lg border-l-4 border-primary">
-                            <i class="fas fa-heart text-primary text-2xl mb-2"></i>
-                            <h4 class="font-bold">Feito com Amor</h4>
-                        </div>
-                        <div class="bg-secondary bg-opacity-20 p-4 rounded-lg border-l-4 border-primary">
-                            <i class="fas fa-birthday-cake text-primary text-2xl mb-2"></i>
-                            <h4 class="font-bold">Para Todas as Ocasiões</h4>
-                        </div>
-                        <div class="bg-secondary bg-opacity-20 p-4 rounded-lg border-l-4 border-primary">
-                            <i class="fas fa-truck text-primary text-2xl mb-2"></i>
-                            <h4 class="font-bold">Entrega Rápida</h4>
-                        </div>
+                <div class="text-center mt-16 space-y-4">
+                    <!-- Botão do Instagram -->
+                    <div class="pt-4">
+                        <a href="https://www.instagram.com/duplo_doce/" 
+                           target="_blank"
+                           class="instagram-btn inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-bold py-3 px-6 rounded-full hover:opacity-90 transition-opacity">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                            Um pouco mais de nossos produtos
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-   <!-- Flavors Section -->
-<section id="flavors" class="py-20">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 font-pacifico text-primary">
-                Nossos Sabores
-            </h2>
-            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-                Descubra nossa variedade de sabores que vão deixar seu paladar encantado!
-            </p>
-            <div class="w-24 h-1 bg-secondary mx-auto mt-4"></div>
-        </div>
+        </section>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Flavor 1 -->
-            <div class="flavor-card bg-black bg-opacity-50 rounded-xl p-6 transition duration-300 ease-in-out hover:shadow-lg border border-gray-800">
-                <div class="bg-primary bg-opacity-20 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 overflow-hidden">
-                   <img 
-                     src="imagens/IMAGEM 1.png" 
-                     alt="Brigadeiro Tradicional" 
-                     class="rounded-full w-full h-full object-cover"
-                   >
-                </div>
-                <h3 class="text-2xl font-bold text-center mb-3 text-primary">Tradicional</h3>
-                <p class="text-gray-300 text-center mb-4">
-                    O clássico brigadeiro que nunca sai de moda, feito com chocolate nobre e muito carinho.
-                </p>
-                <div class="text-center">
-                    <span class="inline-block bg-secondary text-white px-4 py-1 rounded-full text-sm">
-                        Mais pedido
-                    </span>
-                </div>
-            </div>
-            
-            <!-- Flavor 2 -->
-            <div class="flavor-card bg-black bg-opacity-50 rounded-xl p-6 transition duration-300 ease-in-out hover:shadow-lg border border-gray-800">
-                <div class="bg-primary bg-opacity-20 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 overflow-hidden">
-                     <img 
-                       src="imagens/IMAGEM 1.png" 
-                       alt="Brigadeiro Ninho" 
-                       class="rounded-full w-full h-full object-cover"
-                     >
-                </div>
-                <h3 class="text-2xl font-bold text-center mb-3 text-primary">Ninho</h3>
-                <p class="text-gray-300 text-center mb-4">
-                    Cremoso e suave, feito com leite ninho e um toque especial que vai te conquistar.
-                </p>
-            </div>
-            
-            <!-- Flavor 3 -->
-            <div class="flavor-card bg-black bg-opacity-50 rounded-xl p-6 transition duration-300 ease-in-out hover:shadow-lg border border-gray-800">
-                <div class="bg-primary bg-opacity-20 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 overflow-hidden">
-                     <img 
-                       src="imagens/IMAGEM 1.png" 
-                       alt="Brigadeiro Oreo" 
-                       class="rounded-full w-full h-full object-cover"
-                     >
-                </div>
-                <h3 class="text-2xl font-bold text-center mb-3 text-primary">Oreo</h3>
-                <p class="text-gray-300 text-center mb-4">
-                    A combinação perfeita de brigadeiro com pedaços crocantes de biscoito Oreo.
-                </p>
-            </div>
-            
-            <!-- Flavor 4 -->
-            <div class="flavor-card bg-black bg-opacity-50 rounded-xl p-6 transition duration-300 ease-in-out hover:shadow-lg border border-gray-800">
-                <div class="bg-primary bg-opacity-20 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 overflow-hidden">
-                     <img 
-                       src="imagens/IMAGEM 1.png" 
-                       alt="Brigadeiro Casadinho" 
-                       class="rounded-full w-full h-full object-cover"
-                     >
-                </div>
-                <h3 class="text-2xl font-bold text-center mb-3 text-primary">Casadinho</h3>
-                <p class="text-gray-300 text-center mb-4">
-                    A união perfeita dos sabores ninho e chocolate em um só doce irresistível.
-                </p>
-            </div>
-        </div>
-            
-            <div class="text-center mt-16">
-                <p class="text-xl mb-6">
-                    Temos também sabores sazonais e podemos criar sabores personalizados para seu evento!
-                </p>
-                <a href="#contact" class="bg-primary hover:bg-primary-dark text-dark font-bold py-3 px-8 rounded-full inline-block transition">
-                    Peça o seu!
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-12 bg-black bg-opacity-70">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 font-pacifico text-primary">
-                    Nossas Criações
-                </h2>
-                <div class="w-24 h-1 bg-secondary mx-auto"></div>
-            </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="overflow-hidden rounded-lg group relative">
-                    <div class="aspect-square bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                        <img src="imagens/IMAGEM 2.png" 
-                             alt="Brigadeiros Tradicionais" 
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <span class="text-white font-bold">Brigadeiros Tradicionais</span>
-                    </div>
-                </div>
-                <div class="overflow-hidden rounded-lg group relative">
-                    <div class="aspect-square bg-gradient-to-br from-secondary to-primary flex items-center justify-center">
-                        <img src="imagens/IMAGEM 3.png" 
-                             alt="Brigadeiros Ninho" 
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <span class="text-white font-bold">Brigadeiros Ninho</span>
-                    </div>
-                </div>
-                <div class="overflow-hidden rounded-lg group relative">
-                    <div class="aspect-square bg-gradient-to-br from-primary to-pink-300 flex items-center justify-center">
-                        <img src="imagens/IMAGEM 4.png" 
-                             alt="Brigadeiros Oreo" 
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <span class="text-white font-bold">Brigadeiros Oreo</span>
-                    </div>
-                </div>
-                <div class="overflow-hidden rounded-lg group relative">
-                    <div class="aspect-square bg-gradient-to-br from-pink-300 to-primary flex items-center justify-center">
-                        <img src="imagens/IMAGEM 5.png" 
-                             alt="Brigadeiros Casadinho" 
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                        <span class="text-white font-bold">Brigadeiros Casadinho</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-20 bg-black bg-opacity-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 font-pacifico text-primary">
-                    O que dizem sobre nós
-                </h2>
-                <div class="w-24 h-1 bg-secondary mx-auto"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-black bg-opacity-30 rounded-xl p-8 border border-gray-800">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-dark"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Ana Carolina</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">
-                        "Os brigadeiros da Duplo Doce foram o sucesso da minha festa! Todos elogiaram e queriam saber onde comprei. Recomendo muito!"
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="section-title">
+                        Faça seu pedido
+                    </h2>
+                    <p class="text-xl text-contrast max-w-2xl mx-auto">
+                        Preencha as informações abaixo e envie seu pedido pelo WhatsApp!
                     </p>
+                    <div class="title-divider"></div>
                 </div>
                 
-                <!-- Testimonial 2 -->
-                <div class="bg-black bg-opacity-30 rounded-xl p-8 border border-gray-800">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-dark"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Ricardo Almeida</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">
-                        "Comprei para presentear minha esposa e ela adorou! O sabor é incrível e a apresentação impecável. Voltarei a comprar com certeza."
-                    </p>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="bg-black bg-opacity-30 rounded-xl p-8 border border-gray-800">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-dark"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Fernanda Souza</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">
-                        "Fiz um pedido personalizado para o aniversário do meu filho e ficou perfeito! Os brigadeiros eram lindos e deliciosos. Super atenciosos!"
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Order Form Section -->
-    <section class="py-20 bg-gradient-to-b from-black to-gray-900">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 font-pacifico text-primary">
-                    Monte seu Kit Personalizado
-                </h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-                    Escolha seus sabores favoritos e crie um kit exclusivo!
-                </p>
-                <div class="w-24 h-1 bg-secondary mx-auto mt-4"></div>
-            </div>
-            
-            <form class="max-w-4xl mx-auto bg-black bg-opacity-30 rounded-xl p-8 border border-gray-800" onsubmit="submitToWhatsApp(event)">
-                <div class="mb-8">
-                    <h3 class="text-2xl font-bold mb-6 text-primary">Escolha seus sabores</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Flavor 1 -->
-                        <div class="flex items-center">
-                            <input type="checkbox" id="flavor1" class="custom-checkbox">
-                            <label for="flavor1" class="ml-2">Tradicional</label>
+                <div class="form-container max-w-2xl mx-auto p-8">
+                    <form id="order-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="block font-bold mb-2 text-contrast">Nome completo</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:outline-none">
                         </div>
                         
-                        <!-- Flavor 2 -->
-                        <div class="flex items-center">
-                            <input type="checkbox" id="flavor2" class="custom-checkbox">
-                            <label for="flavor2" class="ml-2">Ninho</label>
+                        <div class="form-group">
+                            <label for="phone" class="block font-bold mb-2 text-contrast">Telefone</label>
+                            <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:outline-none">
                         </div>
                         
-                        <!-- Flavor 3 -->
-                        <div class="flex items-center">
-                            <input type="checkbox" id="flavor3" class="custom-checkbox">
-                            <label for="flavor3" class="ml-2">Oreo</label>
+                        <div class="form-group">
+                            <label for="event-date" class="block font-bold mb-2 text-contrast">Data do evento</label>
+                            <input type="date" id="event-date" name="event-date" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:outline-none">
                         </div>
                         
-                        <!-- Flavor 4 -->
-                        <div class="flex items-center">
-                            <input type="checkbox" id="flavor4" class="custom-checkbox">
-                            <label for="flavor4" class="ml-2">Casadinho</label>
-                        </div>
-                        
-                        <!-- Flavor 5 -->
-                        <div class="flex items-center">
-                            <input type="checkbox" id="flavor5" class="custom-checkbox">
-                            <label for="flavor5" class="ml-2">Beijinho</label>
-                        </div>
-                        
-                        <!-- Flavor 6 -->
-                        <div class="flex items-center">
-                            <input type="checkbox" id="flavor6" class="custom-checkbox">
-                            <label for="flavor6" class="ml-2">Ninho com Nutella</label>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mb-8">
-                    <h3 class="text-2xl font-bold mb-6 text-primary">Quantidade</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <!-- Option 1 -->
-                        <div>
-                            <input type="radio" id="qty1" name="quantity" class="custom-radio" value="15 un">
-                            <label for="qty1" class="block text-center p-4 border border-gray-700 rounded-lg hover:border-primary cursor-pointer">
-                                <span class="block text-xl font-bold">15 un</span>
-                                <span class="text-sm text-gray-400">Kit Pequeno</span>
-                            </label>
-                        </div>
-                        
-                        <!-- Option 2 -->
-                        <div>
-                            <input type="radio" id="qty2" name="quantity" class="custom-radio" value="30 un">
-                            <label for="qty2" class="block text-center p-4 border border-gray-700 rounded-lg hover:border-primary cursor-pointer">
-                                <span class="block text-xl font-bold">30 un</span>
-                                <span class="text-sm text-gray-400">Kit Médio</span>
-                            </label>
-                        </div>
-                        
-                        <!-- Option 3 -->
-                        <div>
-                            <input type="radio" id="qty3" name="quantity" class="custom-radio" value="50 un">
-                            <label for="qty3" class="block text-center p-4 border border-gray-700 rounded-lg hover:border-primary cursor-pointer">
-                                <span class="block text-xl font-bold">50 un</span>
-                                <span class="text-sm text-gray-400">Kit Grande</span>
-                            </label>
-                        </div>
-                        
-                        <!-- Option 4 -->
-                        <div>
-                            <input type="radio" id="qty4" name="quantity" class="custom-radio" value="100+ un">
-                            <label for="qty4" class="block text-center p-4 border border-gray-700 rounded-lg hover:border-primary cursor-pointer">
-                                <span class="block text-xl font-bold">100+ un</span>
-                                <span class="text-sm text-gray-400">Eventos</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mb-8">
-                    <h3 class="text-2xl font-bold mb-6 text-primary">Informações Adicionais</h3>
-                    <div class="mb-6">
-                        <label for="order-message" class="block mb-2">Alguma observação especial?</label>
-                        <textarea id="order-message" rows="3" class="w-full bg-black bg-opacity-50 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
-                    </div>
-                    
-                    <div class="flex items-center">
-                        <input type="checkbox" id="gift" class="rounded border-gray-700 text-primary focus:ring-primary">
-                        <label for="gift" class="ml-2">Embalagem para presente</label>
-                    </div>
-                </div>
-                
-                <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-dark font-bold py-3 px-6 rounded-lg transition flex items-center justify-center">
-                    <i class="fas fa-shopping-cart mr-2"></i> Enviar Pedido pelo WhatsApp
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 font-pacifico text-primary">
-                    Faça seu pedido
-                </h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-                    Entre em contato conosco e transforme seu evento em uma celebração inesquecível!
-                </p>
-                <div class="w-24 h-1 bg-secondary mx-auto mt-4"></div>
-            </div>
-            
-            <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-12">
-                    <h3 class="text-2xl font-bold mb-6 text-primary">Informações de Contato</h3>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="bg-primary bg-opacity-20 rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                                <i class="fas fa-phone-alt text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold">Telefone/WhatsApp</h4>
-                                <a href="https://wa.me/5562981674341" class="text-gray-300 hover:text-primary transition">+55 62 9574-2851</a>
+                        <div class="form-group">
+                            <label class="block font-bold mb-4 text-contrast">Quantidade</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                                <div>
+                                    <input type="radio" id="qty-50" name="quantity" value="50 unidades" class="custom-radio">
+                                    <label for="qty-50" class="block text-center p-3 rounded-lg border border-gray-300 cursor-pointer hover:border-primary">50 Un</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="qty-100" name="quantity" value="100 unidades" class="custom-radio">
+                                    <label for="qty-100" class="block text-center p-3 rounded-lg border border-gray-300 cursor-pointer hover:border-primary">100 Un</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="qty-150" name="quantity" value="150 unidades" class="custom-radio">
+                                    <label for="qty-150" class="block text-center p-3 rounded-lg border border-gray-300 cursor-pointer hover:border-primary">150 Un</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="qty-200" name="quantity" value="200 unidades" class="custom-radio">
+                                    <label for="qty-200" class="block text-center p-3 rounded-lg border border-gray-300 cursor-pointer hover:border-primary">200 Un ou +</label>
+                                </div>
+                               
                             </div>
                         </div>
                         
-                        <div class="flex items-start">
-                            <div class="bg-primary bg-opacity-20 rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                                <i class="fab fa-instagram text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold">Instagram</h4>
-                                <a href="https://www.instagram.com/duplo_doce/" target="_blank" class="text-gray-300 hover:text-primary transition">@duplo_doce</a>
-                            </div>
+                      
+                        <div class="form-group">
+                            <label for="message" class="block font-bold mb-2 text-contrast">Mensagem adicional</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:outline-none" placeholder="Detalhes adicionais sobre seu pedido..."></textarea>
                         </div>
                         
-                        <div class="flex items-start">
-                            <div class="bg-primary bg-opacity-20 rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                                <i class="fab fa-facebook-f text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold">Facebook</h4>
-                                <a href="#" class="text-gray-300 hover:text-primary transition">Duplo Doce</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="bg-primary bg-opacity-20 rounded-full w-12 h-12 flex items-center justify-center mr-4">
-                                <i class="fas fa-envelope text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold">Email</h4>
-                                <a href="mailto:contato@duplodoce.com" class="text-gray-300 hover:text-primary transition">contato@duplodoce.com</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-12">
-                        <h3 class="text-2xl font-bold mb-6 text-primary">Horário de Atendimento</h3>
-                        <div class="bg-black bg-opacity-30 rounded-lg p-6 border border-gray-800">
-                            <div class="flex justify-between mb-3 pb-3 border-b border-gray-800">
-                                <span>Segunda a Sexta</span>
-                                <span class="font-bold">09:00 - 18:00</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Sábado</span>
-                                <span class="font-bold">09:00 - 13:00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                
+                        <button type="button" id="send-order" class="btn-primary w-full">
+                            Enviar pedido pelo WhatsApp
+                        </button>
                     </form>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-20 bg-black bg-opacity-50">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 font-pacifico text-primary">
-                    Perguntas Frequentes
-                </h2>
-                <div class="w-24 h-1 bg-secondary mx-auto"></div>
-            </div>
-            
-            <div class="space-y-4">
-                <!-- FAQ Item 1 -->
-                <div class="border-b border-gray-800 pb-4">
-                    <button class="faq-question flex justify-between items-center w-full text-left focus:outline-none">
-                        <span class="font-bold">Qual o prazo de entrega?</span>
-                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-answer mt-2 text-gray-300 hidden">
-                        <p>O prazo de entrega varia de acordo com a quantidade e complexidade do pedido. Para pedidos comuns, o prazo é de 2 a 3 dias úteis. Para eventos e grandes quantidades, recomendamos encomendar com pelo menos 7 dias de antecedência.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 2 -->
-                <div class="border-b border-gray-800 pb-4">
-                    <button class="faq-question flex justify-between items-center w-full text-left focus:outline-none">
-                        <span class="font-bold">Vocês fazem entregas?</span>
-                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-answer mt-2 text-gray-300 hidden">
-                        <p>Sim, fazemos entregas em toda a região. O valor do frete varia de acordo com a localização. Também oferecemos a opção de retirada em nosso ponto de venda.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 3 -->
-                <div class="border-b border-gray-800 pb-4">
-                    <button class="faq-question flex justify-between items-center w-full text-left focus:outline-none">
-                        <span class="font-bold">Posso personalizar os sabores?</span>
-                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-answer mt-2 text-gray-300 hidden">
-                        <p>Com certeza! Oferecemos opções de personalização de sabores e embalagens para tornar seu evento ainda mais especial. Entre em contato para conversarmos sobre suas ideias.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 4 -->
-                <div class="border-b border-gray-800 pb-4">
-                    <button class="faq-question flex justify-between items-center w-full text-left focus:outline-none">
-                        <span class="font-bold">Qual a validade dos brigadeiros?</span>
-                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-answer mt-2 text-gray-300 hidden">
-                        <p>Nossos brigadeiros têm validade de 7 dias quando conservados em temperatura ambiente e até 15 dias quando refrigerados. Recomendamos consumir em até 3 dias para aproveitar todo o sabor e textura.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 5 -->
-                <div class="border-b border-gray-800 pb-4">
-                    <button class="faq-question flex justify-between items-center w-full text-left focus:outline-none">
-                        <span class="font-bold">Vocês fazem brigadeiros para eventos especiais?</span>
-                        <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-answer mt-2 text-gray-300 hidden">
-                        <p>Sim, somos especializados em doces para eventos como casamentos, aniversários, batizados e corporativos. Podemos criar embalagens personalizadas e sabores exclusivos para sua ocasião especial.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <p class="mb-6">Não encontrou sua dúvida aqui?</p>
-                <a href="#contact" class="bg-primary hover:bg-primary-dark text-dark font-bold py-3 px-8 rounded-full inline-block transition">
-                    Entre em contato
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black py-12">
+        </section>
+    </main>
+    
+    <footer class="py-10">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-8 md:mb-0">
-                    <div class="text-2xl font-pacifico text-primary mb-4 flex items-center">
-                        <div class="h-8 w-8 mr-2 rounded-full bg-primary flex items-center justify-center overflow-hidden">
-                            <img src="imagens/imagem 0.jpg" 
+                <div class="mb-6 md:mb-0">
+                    <div class="text-2xl font-bold text-primary flex items-center">
+                        <div class="h-10 w-10 mr-2 rounded-full bg-primary flex items-center justify-center overflow-hidden">
+                            <img src="imagens/IMAGEM 0.png" 
                                  alt="Logo Duplo Doce" 
                                  class="w-full h-full object-cover">
                         </div>
                         Duplo Doce
                     </div>
-                    <p class="text-gray-400 max-w-md">
-                        Transformando celebrações em momentos doces e inesquecíveis desde 2020.
-                    </p>
+                    <p class="mt-2 text-contrast">Brigadeiros Gourmet feitos com amor</p>
                 </div>
                 
-                <div class="flex space-x-6 mb-8 md:mb-0">
-                    <a href="https://www.instagram.com/duplo_doce/" target="_blank" class="text-gray-400 hover:text-primary text-2xl transition">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-primary text-2xl transition">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://wa.me/5562981674341" class="text-gray-400 hover:text-primary text-2xl transition">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
-                
-                <div class="text-center md:text-right">
-                    <p class="text-gray-400 mb-2">
+                <div class="flex flex-col items-center md:items-end">
+                    <div class="flex space-x-4 mb-4">
+                        <a href="https://www.instagram.com/duplo_doce/" target="_blank" class="text-contrast hover:text-primary" aria-label="Instagram">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                        <a href="https://wa.me/556295742851" target="_blank" class="text-contrast hover:text-primary" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                        </a>
+                        <a href="mailto:contato@duplodoce.com" class="text-contrast hover:text-primary" aria-label="Email">
+                            <i class="fas fa-envelope text-2xl"></i>
+                        </a>
+                    </div>
+                    <p class="text-contrast text-center md:text-right">
                         &copy; 2023 Duplo Doce. Todos os direitos reservados.
-                    </p>
-                    <p class="text-gray-500 text-sm">
-                        Feito com <i class="fas fa-heart text-primary"></i> por Duplo Doce
                     </p>
                 </div>
             </div>
         </div>
     </footer>
-
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-dark w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition opacity-0 invisible">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/5562981674341" target="_blank" class="fixed bottom-8 left-8 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition hover:bg-green-600 z-50">
-        <i class="fab fa-whatsapp text-2xl"></i>
-    </a>
-
+    
     <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        // Menu Mobile Toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.style.display = 'block';
+            document.body.style.overflow = 'hidden';
         });
         
-        // Back to top button
-        const backToTopBtn = document.getElementById('back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.remove('opacity-0', 'invisible');
-                backToTopBtn.classList.add('opacity-100', 'visible');
-            } else {
-                backToTopBtn.classList.remove('opacity-100', 'visible');
-                backToTopBtn.classList.add('opacity-0', 'invisible');
-            }
+        document.getElementById('close-menu').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.style.display = 'none';
+            document.body.style.overflow = 'auto';
         });
         
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').style.display = 'none';
+                document.body.style.overflow = 'auto';
             });
         });
         
-        // Smooth scrolling for anchor links
+        // WhatsApp Order Script
+        document.getElementById('send-order').addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const eventDate = document.getElementById('event-date').value;
+            const quantity = document.querySelector('input[name="quantity"]:checked')?.value || 'Não especificado';
+            
+            // Obter sabores selecionados
+            const selectedFlavors = [];
+            document.querySelectorAll('input[name="flavor"]:checked').forEach(checkbox => {
+                selectedFlavors.push(checkbox.value);
+            });
+            
+            const message = document.getElementById('message').value;
+            
+            // Formatar a data para exibir no formato brasileiro
+            const formattedDate = eventDate ? new Date(eventDate).toLocaleDateString('pt-BR') : 'Não especificada';
+            
+            // Montar a mensagem
+            let whatsappMessage = `Olá, gostaria de fazer um pedido!%0A%0A` +
+                       `*Nome:* ${name}%0A` +
+                       `*Telefone:* ${phone}%0A` +
+                       `*Data do evento:* ${formattedDate}%0A` +
+                       `*Quantidade:* ${quantity}%0A`;
+            
+            if (selectedFlavors.length > 0) {
+                whatsappMessage += `*Sabores:* ${selectedFlavors.join(', ')}%0A`;
+            }
+            
+            if (message) {
+                whatsappMessage += `*Mensagem adicional:* ${message}%0A`;
+            }
+            
+            // Número do WhatsApp
+            const whatsappNumber = '556295742851';
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+            
+            // Redirecionar
+            window.open(whatsappUrl, '_blank');
+        });
+        
+        // Smooth scrolling para links de navegação
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
                 const targetElement = document.querySelector(targetId);
+                
                 if (targetElement) {
-                    targetElement.scrollIntoView({
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                    
-                    // Close mobile menu if open
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
                 }
             });
         });
-        
-        // FAQ accordion functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const icon = question.querySelector('i');
-                
-                // Toggle answer visibility
-                answer.classList.toggle('hidden');
-                
-                // Rotate icon
-                icon.classList.toggle('rotate-180');
-                
-                // Close other open answers
-                document.querySelectorAll('.faq-question').forEach(q => {
-                    if (q !== question) {
-                        q.nextElementSibling.classList.add('hidden');
-                        q.querySelector('i').classList.remove('rotate-180');
-                    }
-                });
-            });
-        });
-        
-        // Form submission (example)
-        const contactForm = document.querySelector('#contact form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-                contactForm.reset();
-            });
-        }
-    </script>
-    <script>
-        function submitToWhatsApp(event) {
-            event.preventDefault();
-            
-            // Get form values
-            const flavors = [];
-            document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
-                flavors.push(checkbox.nextElementSibling.textContent.trim());
-            });
-            
-            const quantity = document.querySelector('input[name="quantity"]:checked');
-            const quantityText = quantity ? quantity.nextElementSibling.querySelector('span:first-child').textContent.trim() : 'Não selecionado';
-            
-            const message = document.getElementById('order-message').value;
-            const isGift = document.getElementById('gift').checked;
-            
-            // Validation
-            if (flavors.length === 0) {
-                alert('Por favor, selecione pelo menos um sabor!');
-                return;
-            }
-            
-            if (!quantity) {
-                alert('Por favor, selecione uma quantidade!');
-                return;
-            }
-            
-            // Build WhatsApp message
-            let whatsappMessage = `Olá Duplo Doce! Gostaria de fazer um pedido:\n\n`;
-            whatsappMessage += `*Sabores selecionados:*\n${flavors.join('\n')}\n\n`;
-            whatsappMessage += `*Quantidade:* ${quantityText}\n`;
-            whatsappMessage += `*Embalagem para presente:* ${isGift ? 'Sim' : 'Não'}\n`;
-            whatsappMessage += `*Observações:* ${message || 'Nenhuma'}\n\n`;
-            whatsappMessage += `Por favor, me informe sobre disponibilidade e valor. Obrigado!`;
-            
-            // Encode for URL
-            const encodedMessage = encodeURIComponent(whatsappMessage);
-            
-            // Open WhatsApp
-            window.open(`https://wa.me/5562981674341?text=${encodedMessage}`, '_blank');
-        }
     </script>
 </body>
 </html>
