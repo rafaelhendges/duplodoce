@@ -5,13 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Duplo Doce - Brigadeiros Gourmet</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Configuração Tailwind com paleta personalizada -->
     <script>
         tailwind.config = {
             theme: {
@@ -32,11 +29,9 @@
         }
     </script>
     
-    <!-- Fonte Nunito do Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* Estilos gerais */
         body {
             background-color: #feb6b7;
             color: #3a1a1b;
@@ -67,7 +62,6 @@
             text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
         
-        /* Elementos decorativos */
         .pink-dot {
             width: 10px;
             height: 10px;
@@ -77,7 +71,6 @@
             margin: 0 5px;
         }
         
-        /* Animações */
         @keyframes float {
             0%   { transform: translateY(0px); }
             50%  { transform: translateY(-10px); }
@@ -87,7 +80,6 @@
         .animate-float {
             animation: float 3s ease-in-out infinite;
         }
-        /* Animação para o botão do WhatsApp */
         @keyframes pulse {
             0% {
                 box-shadow: 0 0 0 0 rgba(231, 4, 68, 0.7);
@@ -100,7 +92,6 @@
             }
         }
         
-        /* Componentes */
         .content-card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 16px;
@@ -204,7 +195,6 @@
             border-top: 1px solid rgba(130, 41, 41, 0.414);
         }
         
-        /* Menu mobile */
         .mobile-menu-container {
             position: fixed;
             top: 0;
@@ -242,7 +232,6 @@
             color: #3a1a1b;
         }
         
-        /* Formulário */
         .contact-form input, 
         .contact-form textarea, 
         .contact-form select {
@@ -272,7 +261,6 @@
             margin-bottom: 10px;
         }
         
-        /* Cardápio */
         .menu-container {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 16px;
@@ -306,7 +294,6 @@
         .menu-item.adicional:hover {
             background: rgba(247, 98, 140, 0.5);
         }
-        /* Botão Flutuante WhatsApp */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -332,12 +319,11 @@
         }
         
         .whatsapp-float:hover {
-            animation: none; /* Para a animação ao passar o mouse */
+            animation: none;
             transform: scale(1.1);
             background-color: #128c7e;
         }
         
-        /* Responsividade */
         @media (max-width: 768px) {
             .section-title {
                 font-size: 2rem;
@@ -355,11 +341,9 @@
     </style>
 </head>
 <body class="font-sans">
-    <!-- Botão Flutuante WhatsApp -->
     <a href="https://wa.me/556295742851" target="_blank" class="whatsapp-float" aria-label="Fale conosco pelo WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
-    <!-- Header/Navigation -->
     <header class="sticky top-0 z-50 bg-white bg-opacity-90 backdrop-blur-sm shadow-sm">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
@@ -391,7 +375,6 @@
         </nav>
     </header>
     
-    <!-- Mobile menu -->
     <div id="mobile-menu" class="mobile-menu-container">
         <button class="close-menu-btn" id="close-menu">
             <i class="fas fa-times"></i>
@@ -405,7 +388,6 @@
         </div>
     </div>
     <main>
-        <!-- Hero Section -->
         <section id="home" class="py-20">
             <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-12 md:mb-0">
@@ -445,7 +427,6 @@
                 </div>
             </div>
         </section>
-        <!-- About Section -->
         <section id="about" class="py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
@@ -501,7 +482,6 @@
                 </div>
             </div>
         </section>
-        <!-- Flavors Section -->
         <section id="flavors" class="py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
@@ -515,7 +495,6 @@
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Flavor 1 -->
                     <div class="flavor-card rounded-xl p-6 transition duration-300 ease-in-out hover:shadow-lg">
                         <div class="bg-white bg-opacity-70 rounded-full w-40 h-40 flex items-center justify-center mx-auto mb-6 overflow-hidden">
                            <img 
@@ -530,7 +509,6 @@
                         </p>
                     </div>
                     
-                    <!-- Flavor 2 -->
                     <div class="flavor-card rounded-xl p-6 transition duration-300 ease-in-out hover:shadow-lg">
                         <div class="bg-white bg-opacity-70 rounded-full w-40 h-40 flex items-center justify-center mx-auto mb-6 overflow-hidden">
                              <img 
@@ -545,7 +523,6 @@
                         </p>
                     </div>
                     
-                    <!-- Flavor 3 -->
                     <div class="flavor-card rounded-xl p-6 transition duration-300 ease-in-out hover:shadow-lg">
                         <div class="bg-white bg-opacity-70 rounded-full w-40 h-40 flex items-center justify-center mx-auto mb-6 overflow-hidden">
                              <img 
@@ -560,7 +537,6 @@
                         </p>
                     </div>
                     
-                    <!-- Flavor 4 -->
                     <div class="flavor-card rounded-xl p-6 transition duration-300 ease-in-out hover:shadow-lg">
                         <div class="bg-white bg-opacity-70 rounded-full w-40 h-40 flex items-center justify-center mx-auto mb-6 overflow-hidden">
                              <img 
@@ -576,7 +552,6 @@
                     </div>
                 </div>
                 
-                <!-- Cardápio Completo -->
                 <div class="menu-container mt-16">
                     <div class="text-center mb-8">
                         <h3 class="text-3xl font-bold text-primary">Cardápio Completo</h3>
@@ -615,7 +590,6 @@
                 </div>
             </div>
         </section>
-        <!-- Gallery Section -->
         <section id="gallery" class="py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
@@ -628,9 +602,7 @@
                     <div class="title-divider"></div>
                 </div>
                 
-                <!-- Grid com 8 fotos -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <!-- Item 1 -->
                     <div class="overflow-hidden rounded-lg group relative gallery-item">
                         <div class="aspect-square bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
                             <img src="imagens/IMAGEM 2.png" 
@@ -642,7 +614,6 @@
                         </div>
                     </div>
                     
-                    <!-- Item 2 -->
                     <div class="overflow-hidden rounded-lg group relative gallery-item">
                         <div class="aspect-square bg-gradient-to-br from-secondary to-primary flex items-center justify-center">
                             <img src="imagens/IMAGEM 3.png" 
@@ -654,7 +625,6 @@
                         </div>
                     </div>
                     
-                    <!-- Item 3 -->
                     <div class="overflow-hidden rounded-lg group relative gallery-item">
                         <div class="aspect-square bg-gradient-to-br from-primary to-pink-300 flex items-center justify-center">
                             <img src="imagens/IMAGEM 4.png" 
@@ -666,7 +636,6 @@
                         </div>
                     </div>
                     
-                    <!-- Item 4 -->
                     <div class="overflow-hidden rounded-lg group relative gallery-item">
                         <div class="aspect-square bg-gradient-to-br from-pink-300 to-primary flex items-center justify-center">
                             <img src="imagens/IMAGEM 5.png" 
@@ -678,7 +647,6 @@
                         </div>
                     </div>
                     
-                    <!-- Item 5 -->
                     <div class="overflow-hidden rounded-lg group relative gallery-item">
                         <div class="aspect-square bg-gradient-to-br from-yellow-300 to-amber-500 flex items-center justify-center">
                             <img src="imagens/IMAGEM 6.png" 
@@ -690,7 +658,6 @@
                         </div>
                     </div>
                     
-                    <!-- Item 6 -->
                     <div class="overflow-hidden rounded-lg group relative gallery-item">
                         <div class="aspect-square bg-gradient-to-br from-amber-500 to-yellow-300 flex items-center justify-center">
                             <img src="imagens/IMAGEM 7.png" 
@@ -702,7 +669,6 @@
                         </div>
                     </div>
                     
-                    <!-- Item 7 -->
                     <div class="overflow-hidden rounded-lg group relative gallery-item">
                         <div class="aspect-square bg-gradient-to-br from-red-300 to-rose-500 flex items-center justify-center">
                             <img src="imagens/IMAGEM 8.png" 
@@ -714,7 +680,6 @@
                         </div>
                     </div>
                     
-                    <!-- Item 8 -->
                     <div class="overflow-hidden rounded-lg group relative gallery-item">
                         <div class="aspect-square bg-gradient-to-br from-rose-500 to-red-300 flex items-center justify-center">
                             <img src="imagens/IMAGEM 1.png" 
@@ -728,7 +693,6 @@
                 </div>
                 
                 <div class="text-center mt-16 space-y-4">
-                    <!-- Botão do Instagram -->
                     <div class="pt-4">
                         <a href="https://www.instagram.com/duplo_doce/" 
                            target="_blank"
@@ -743,7 +707,6 @@
             </div>
         </section>
         
-        <!-- Contact Section -->
         <section id="contact" class="py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
@@ -844,7 +807,6 @@
     </footer>
     
     <script>
-        // Menu Mobile Toggle
         document.getElementById('menu-btn').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
             menu.style.display = 'block';
@@ -857,7 +819,6 @@
             document.body.style.overflow = 'auto';
         });
         
-        // Fechar menu ao clicar em um link
         document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('mobile-menu').style.display = 'none';
@@ -865,14 +826,12 @@
             });
         });
         
-        // WhatsApp Order Script
         document.getElementById('send-order').addEventListener('click', function() {
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const eventDate = document.getElementById('event-date').value;
             const quantity = document.querySelector('input[name="quantity"]:checked')?.value || 'Não especificado';
             
-            // Obter sabores selecionados
             const selectedFlavors = [];
             document.querySelectorAll('input[name="flavor"]:checked').forEach(checkbox => {
                 selectedFlavors.push(checkbox.value);
@@ -880,10 +839,8 @@
             
             const message = document.getElementById('message').value;
             
-            // Formatar a data para exibir no formato brasileiro
             const formattedDate = eventDate ? new Date(eventDate).toLocaleDateString('pt-BR') : 'Não especificada';
             
-            // Montar a mensagem
             let whatsappMessage = `Olá, gostaria de fazer um pedido!%0A%0A` +
                        `*Nome:* ${name}%0A` +
                        `*Telefone:* ${phone}%0A` +
@@ -898,15 +855,12 @@
                 whatsappMessage += `*Mensagem adicional:* ${message}%0A`;
             }
             
-            // Número do WhatsApp
             const whatsappNumber = '556295742851';
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
             
-            // Redirecionar
             window.open(whatsappUrl, '_blank');
         });
         
-        // Smooth scrolling para links de navegação
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -925,4 +879,3 @@
     </script>
 </body>
 </html>
-
